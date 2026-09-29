@@ -1,8 +1,8 @@
 function Header() {
   return (
     <header>
-      <h1>Student Directory</h1>
-      <p>CSC220 Student Records</p>
+      <h1>CSC220 Student Directory</h1>
+      <p>Week 10 - Introduction to React</p>
     </header>
   );
 }

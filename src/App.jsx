@@ -1,22 +1,20 @@
-import "./App.css";
 import Header from "./components/Header";
 import StudentCard from "./components/StudentCard";
-import Footer from "./components/Footer";
+
+const students = [
+  { id: 1, name: "Ana", major: "IT", score: 82 },
+  { id: 2, name: "Boon", major: "CS", score: 58 },
+  { id: 3, name: "Chai", major: "IT", score: 74 },
+  { id: 4, name: "Dara", major: "CS", score: 91 },
+  { id: 5, name: "Eve", major: "IT", score: 55 },
+];
 
 function App() {
-  const students = [
-    { id: 1, name: "Ana", major: "IT", score: 82 },
-    { id: 2, name: "Jimmy", major: "IT", score: 90 },
-    { id: 3, name: "John", major: "Business", score: 45 },
-    { id: 4, name: "Sarah", major: "Computer Science", score: 76 },
-    { id: 5, name: "Mike", major: "Marketing", score: 38 },
-  ];
-
   return (
-    <div className="app">
+    <>
       <Header />
 
-      <main className="student-container">
+      <main className="student-grid">
         {students.map((student) => (
           <StudentCard
             key={student.id}
@@ -26,9 +24,7 @@ function App() {
           />
         ))}
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }
 
