@@ -8,14 +8,29 @@ function AddStudentForm({ onAdd }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (name.trim() === "") return;
+    if (name.trim() === "") {
+      alert("Please enter the student's name.");
+      return;
+    }
 
-    onAdd({
+    if (major.trim() === "") {
+      alert("Please enter the student's major.");
+      return;
+    }
+
+    if (score === "" || Number(score) < 0 || Number(score) > 100) {
+      alert("Please enter a score from 0 to 100.");
+      return;
+    }
+
+    const newStudent = {
       id: Date.now(),
       name: name.trim(),
       major: major.trim(),
       score: Number(score),
-    });
+    };
+
+    onAdd(newStudent);
 
     setName("");
     setMajor("");
@@ -23,10 +38,10 @@ function AddStudentForm({ onAdd }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="student-form" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Name"
+        placeholder="Student name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -41,6 +56,8 @@ function AddStudentForm({ onAdd }) {
       <input
         type="number"
         placeholder="Score"
+        min="0"
+        max="100"
         value={score}
         onChange={(e) => setScore(e.target.value)}
       />
